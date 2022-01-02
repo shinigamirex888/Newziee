@@ -6,6 +6,8 @@ import InfoHeader from "./components/InfoHeader";
 const useStyles = makeStyles({
   container: {
     marginTop: 110,
+    width: "59%",
+    margin: "0 auto",
   }
 })
 
