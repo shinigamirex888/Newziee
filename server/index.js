@@ -1,15 +1,25 @@
-import express from "express";
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import dotenv from 'dotenv'
 
-// components import
-import Connection from "./connection/db.js";
-
+//components
+import Connection from './connection/db.js';
+import DefaultData from './default.js'
 
 const app = express();
+dotenv.config();
 
-Connection();
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ extended: true }));
 
-const port=8000
+const username = process.env.DB_USERNAME;
+const password = process.env.DB_PASSWORD;
+const PORT = 8000;
 
-app.listen(port,()=> console.log(`server is running on port ${port}`))
+Connection(username, password);
 
+app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
 
+DefaultData();
