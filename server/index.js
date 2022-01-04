@@ -6,6 +6,8 @@ import dotenv from 'dotenv'
 //components
 import Connection from './connection/db.js';
 import DefaultData from './default.js'
+import route from './routes/route.js';
+
 
 const app = express();
 dotenv.config();
@@ -13,6 +15,8 @@ dotenv.config();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ extended: true }));
+app.use('/', route);
+
 
 const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
